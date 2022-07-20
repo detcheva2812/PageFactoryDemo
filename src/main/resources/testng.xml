@@ -1,0 +1,8 @@
+<suite name ="TestSuite" parallel="methods" thread-count ="5">
+    <test name="Tests">
+        <classes>
+            <class name="selenium.LandingPageTest"/>
+            <class name="selenium.LoginPageTest"/>
+        </classes>
+    </test>
+</suite>
