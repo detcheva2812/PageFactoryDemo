@@ -23,9 +23,7 @@ public class LandingPage {
 
         driver.get("http://training.skillo-bg.com");
         loginLink = driver.findElement(loginLinkBy);
-
     }
-
     //init web elements methods
     public void loginLinkClick(){
         loginLink.click();

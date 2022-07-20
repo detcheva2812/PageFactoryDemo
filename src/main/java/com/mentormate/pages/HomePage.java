@@ -31,7 +31,6 @@ public class HomePage {
 
         //logoutLink = driver.findElement(logoutLinkBy);
         PageFactory.initElements(driver, this);
-
     }
 
     //init web elements methods

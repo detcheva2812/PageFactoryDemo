@@ -22,7 +22,6 @@ public class LandingPageTest {
     LoginPage loginPage;
 
 
-
     @BeforeMethod
     public void setUp() {
         ChromeOptions options = new ChromeOptions();
