@@ -30,6 +30,7 @@ public class LoginPage {
     @FindBy(xpath = "//button[@id = 'sign-in-button']")
     WebElement signInBtn;
 
+
     public LoginPage(WebDriver driver) {
         this.driver = driver;
 

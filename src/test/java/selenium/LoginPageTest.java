@@ -60,6 +60,7 @@ public class LoginPageTest {
 
         Assert.assertTrue(homePage.isLogoutLinkDisplayed());
     }
+
 }
 
 
