@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -13,7 +15,8 @@ public class LandingPage {
     public Actions actions;
     public WebDriverWait wait;
 
-    By loginLinkBy = By.id("nav-link-login");
+    //By loginLinkBy = By.id("nav-link-login");
+    @FindBy(id="nav-link-login")
     WebElement loginLink;
 
     public LandingPage(WebDriver driver) {
@@ -22,7 +25,8 @@ public class LandingPage {
         actions = new Actions(driver); //actions --> няколко actions едно след друго с точки
 
         driver.get("http://training.skillo-bg.com");
-        loginLink = driver.findElement(loginLinkBy);
+        //loginLink = driver.findElement(loginLinkBy);
+        PageFactory.initElements(driver, this);
     }
     //init web elements methods
     public void loginLinkClick(){
