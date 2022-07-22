@@ -1,65 +1,51 @@
 package selenium;
 
+import com.mentormate.common.RetryAnalyzer;
+import com.mentormate.common.Screenshot;
 import com.mentormate.pages.HomePage;
 import com.mentormate.pages.LoginPage;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
-
-public class LoginPageTest {
-    public WebDriver driver;
-    public Actions actions;
-    public WebDriverWait wait;
+public class LoginPageTest extends BaseTest {
     public LoginPage loginPage;
     public HomePage homePage;
 
-
     @BeforeMethod
-    public void setUp() {
-        ChromeOptions options = new ChromeOptions();
-        //options.addArguments("--headless");
-        options.addArguments("--window-size=1600x900");
-        //стандартно се използва 1920x1080
-
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        //Можем да използваме и това:
-        //driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
-
-        wait = new WebDriverWait(driver, Duration.ofSeconds(15)); //explicit wait
-        actions = new Actions(driver); //actions --> няколко actions едно след друго с точки
-
+    public void setUpInTest() {
         loginPage = new LoginPage(driver);
     }
 
     @AfterMethod
-    public void tearDown() {
-        driver.quit();
+    public void tearDown(ITestResult result) {
+        if (!result.isSuccess()) {
+            Screenshot.capture(driver, "target/surefire-reports", result.getName());
+        }
     }
-
-    @Test
+    @Test(retryAnalyzer =RetryAnalyzer.class)
     public void testLoginPage() {
 
-        loginPage.login("dilianadet", "123456");
+        loginPage.login("dilianadet", "1234567"); //correct password is 123456, to make the test fail, change it
 
         homePage = new HomePage(driver);
 
         Assert.assertTrue(homePage.isLogoutLinkDisplayed());
     }
+
+//    @Test(retryAnalyzer =RetryAnalyzer.class)
+//    public void Test1()
+//    {
+//        Assert.assertEquals(false, true);
+//    }
+//
+//    @Test
+//    public void Test2()
+//    {
+//        Assert.assertEquals(false, true);
+//    }
 
 }
 

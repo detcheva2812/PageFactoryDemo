@@ -1,4 +1,7 @@
 <suite name ="TestSuite" parallel="methods" thread-count ="5">
+    <listeners>
+        <listener class-name="com.mentormate.common.AnnotationTransformer"/>
+    </listeners>
     <test name="Tests">
         <classes>
             <class name="selenium.LandingPageTest"/>

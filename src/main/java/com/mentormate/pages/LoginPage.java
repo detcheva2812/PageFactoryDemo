@@ -2,17 +2,10 @@ package com.mentormate.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
-public class LoginPage {
-    public WebDriver driver;
-    public Actions actions;
-    public WebDriverWait wait;
+public class LoginPage extends BasePage {
 
     // By signInTxtBy = By.xpath("//p[text()='Sign in']");
     @FindBy(xpath = "//p[text()='Sign in']")
@@ -32,14 +25,7 @@ public class LoginPage {
 
 
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
-
-        wait = new WebDriverWait(driver, Duration.ofSeconds(15)); //explicit wait
-
-        actions = new Actions(driver); //actions --> няколко actions едно след друго с точки
+        super(driver);
 
         driver.get("http://training.skillo-bg.com/users/login");
         //signInTxt = driver.findElement(signInTxtBy);
@@ -49,24 +35,28 @@ public class LoginPage {
     }
 
     //init web elements methods
-    public void fillUsername(String userName){
+    public void fillUsername(String userName) {
         username.click();
+        //click(usernname);
         username.clear();
         username.sendKeys(userName);
     }
 
-    public void fillPassword(String pass){
+    public void fillPassword(String pass) {
         password.click();
+        //click(password);
         password.clear();
         password.sendKeys(pass);
 
     }
 
     public void signInBtnClick() {
+        //fluentWait.until(ExpectedConditions.elementToBeClickable(signInBtn)); //just an example that we can use that with Fluent wait or explicit wait
         signInBtn.click();
+        //click(signInBtn);
     }
 
-    public void login(String userName, String pass){
+    public void login(String userName, String pass) {
         fillUsername(userName);
         fillPassword(pass);
         signInBtnClick();
