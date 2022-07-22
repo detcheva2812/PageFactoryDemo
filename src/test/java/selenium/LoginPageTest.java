@@ -25,27 +25,16 @@ public class LoginPageTest extends BaseTest {
             Screenshot.capture(driver, "target/surefire-reports", result.getName());
         }
     }
-    @Test(retryAnalyzer =RetryAnalyzer.class)
+
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void testLoginPage() {
 
-        loginPage.login("dilianadet", "1234567"); //correct password is 123456, to make the test fail, change it
+        loginPage.login("dilianadet", "123456"); //correct password is 123456, to make the test fail, change it
 
         homePage = new HomePage(driver);
 
         Assert.assertTrue(homePage.isLogoutLinkDisplayed());
     }
-
-//    @Test(retryAnalyzer =RetryAnalyzer.class)
-//    public void Test1()
-//    {
-//        Assert.assertEquals(false, true);
-//    }
-//
-//    @Test
-//    public void Test2()
-//    {
-//        Assert.assertEquals(false, true);
-//    }
 
 }
 

@@ -14,12 +14,11 @@ import java.time.Duration;
 
 public class BaseTest {
     public WebDriver driver;
-    //LandingPage landingPage;
 
     @BeforeClass
     public void setUp(){
         ChromeOptions options = new ChromeOptions();
-        //options.addArguments("--headless");
+        options.addArguments("--headless");
         options.addArguments("--window-size=1600x900");
 
         WebDriverManager.chromedriver().setup();
@@ -27,7 +26,6 @@ public class BaseTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        //landingPage = new LandingPage(driver);
     }
 
     @AfterClass

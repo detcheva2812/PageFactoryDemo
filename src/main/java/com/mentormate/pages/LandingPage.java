@@ -7,9 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LandingPage extends BasePage {
-
-
-    //By loginLinkBy = By.id("nav-link-login");
     @FindBy(id="nav-link-login")
     WebElement loginLink;
 
@@ -17,7 +14,6 @@ public class LandingPage extends BasePage {
         super(driver);
 
         driver.get("http://training.skillo-bg.com");
-        //loginLink = driver.findElement(loginLinkBy);
         PageFactory.initElements(driver, this);
     }
     //init web elements methods
@@ -25,7 +21,6 @@ public class LandingPage extends BasePage {
         fluentWait.until(ExpectedConditions.elementToBeClickable(loginLink)); //just an example that we can use that with Fluent wait or explicit wait
         loginLink.click();
     }
-
 
     //Verification methods
     public boolean isLoginLinkDisplayed (){

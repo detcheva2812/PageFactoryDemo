@@ -7,19 +7,15 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends BasePage {
 
-    // By signInTxtBy = By.xpath("//p[text()='Sign in']");
     @FindBy(xpath = "//p[text()='Sign in']")
     WebElement signInTxt;
 
-    //By usernameBy = By.xpath("//input[@id = 'defaultLoginFormUsername']");
     @FindBy(xpath = "//input[@id = 'defaultLoginFormUsername']")
     WebElement username;
 
-    //By passwordBy = By.xpath("//input[@id = 'defaultLoginFormPassword']");
     @FindBy(xpath = "//input[@id = 'defaultLoginFormPassword']")
     WebElement password;
 
-    //By signInBtnBy = By.xpath("//button[@id = 'sign-in-button']");
     @FindBy(xpath = "//button[@id = 'sign-in-button']")
     WebElement signInBtn;
 
@@ -28,7 +24,6 @@ public class LoginPage extends BasePage {
         super(driver);
 
         driver.get("http://training.skillo-bg.com/users/login");
-        //signInTxt = driver.findElement(signInTxtBy);
 
         PageFactory.initElements(driver, this);
 
@@ -37,14 +32,12 @@ public class LoginPage extends BasePage {
     //init web elements methods
     public void fillUsername(String userName) {
         username.click();
-        //click(usernname);
         username.clear();
         username.sendKeys(userName);
     }
 
     public void fillPassword(String pass) {
         password.click();
-        //click(password);
         password.clear();
         password.sendKeys(pass);
 
@@ -53,7 +46,6 @@ public class LoginPage extends BasePage {
     public void signInBtnClick() {
         //fluentWait.until(ExpectedConditions.elementToBeClickable(signInBtn)); //just an example that we can use that with Fluent wait or explicit wait
         signInBtn.click();
-        //click(signInBtn);
     }
 
     public void login(String userName, String pass) {

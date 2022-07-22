@@ -16,11 +16,6 @@ public class LandingPageTest extends BaseTest {
         landingPage = new LandingPage(driver);
     }
 
-//    @AfterMethod
-//    public void tearDown() {
-//        driver.quit();
-//    }
-
     @Test
     public void testLandingPage(){
 
