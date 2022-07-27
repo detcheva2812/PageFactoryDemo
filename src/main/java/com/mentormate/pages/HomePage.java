@@ -19,6 +19,7 @@ public class HomePage extends BasePage{
 
     //init web elements methods
 
+
     //Verification methods
     public boolean isLogoutLinkDisplayed() {
         return logoutLink.isDisplayed();
